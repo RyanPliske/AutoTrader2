@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AutoTrader2/VehicleListViewController.swift"
-            timestampString = "557280326.583908"
+            timestampString = "557297627.76669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "deinit"
             landmarkType = "7">
          </BreakpointContent>

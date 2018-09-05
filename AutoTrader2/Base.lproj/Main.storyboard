@@ -65,7 +65,6 @@
                                             <outlet property="makeLabel" destination="nb2-vZ-fua" id="pJU-Uv-iEY"/>
                                             <outlet property="modelLabel" destination="rcO-cC-Cmt" id="iFZ-DI-PBk"/>
                                             <outlet property="yearLabel" destination="fXn-oY-T7r" id="Fwn-xb-h3B"/>
-                                            <segue destination="xMF-vf-W1c" kind="show" identifier="showDetails" id="tra-3y-Xmb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -94,6 +93,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="VOp-f2-Pt6" id="yRM-em-6Ru"/>
+                        <segue destination="xMF-vf-W1c" kind="show" identifier="showDetails" id="Z0s-Uw-C5K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

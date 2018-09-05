@@ -1,26 +1,5 @@
 import UIKit
 
-class CarsModel {
-    var vehicles = [Vehicle]()
-    var selections: [Selection] = [
-        Selection(option: .lowestToHighestInPrice, isChecked: false),
-        Selection(option: .aToZForMake, isChecked: false),
-        Selection(option: .aToZForModel, isChecked: false),
-        Selection(option: .oldestToNewest, isChecked: false)
-    ]
-    var selectedIndex = 0
-    
-    init() {
-        let generator = VehiclesGenerator()
-        self.vehicles = generator.vehicles
-    }
-    
-    func newSelection(at index: Int) {
-        selections[index].isChecked = !selections[index].isChecked
-        // sort the vehicles array!
-    }
-}
-
 class CarsCell: UITableViewCell {
     @IBOutlet weak var makeLabel: UILabel!
     @IBOutlet weak var modelLabel: UILabel!
@@ -31,13 +10,13 @@ class VehicleListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var model: CarsModel!
+    var model: VehiclesModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        model = CarsModel()
+        model = VehiclesModel()
     }
     
     deinit {
@@ -46,7 +25,7 @@ class VehicleListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vehicleViewController = segue.destination as? VehicleDetailViewController  {
-            vehicleViewController.vehicle = model.vehicles[model.selectedIndex]
+            vehicleViewController.vehicle = model.selectedVehicle
         } else if let optionsViewController = segue.destination as? SortOptionsViewController {
             optionsViewController.delegate = self
         }
@@ -70,7 +49,7 @@ extension VehicleListViewController: SortOptionsViewControllerDelegate {
 extension VehicleListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("🤠 User Selected row at \(indexPath.row)")
-        model.selectedIndex = indexPath.row
+        model.vehicleSelected(at: indexPath.row)
         performSegue(withIdentifier: "showDetails", sender: self)
     }
 }
@@ -81,14 +60,14 @@ extension VehicleListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.vehicles.count
+        return model.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let vehicleCell = tableView.dequeueReusableCell(withIdentifier: "carsCell", for: indexPath) as? CarsCell else {
             return UITableViewCell()
         }
-        let vehicle = model.vehicles[indexPath.row]
+        let vehicle = model.sortedVehicles[indexPath.row]
         vehicleCell.makeLabel.text = "Make: " + vehicle.make
         vehicleCell.modelLabel.text = "Model: " + vehicle.model
         vehicleCell.yearLabel.text = "Year \(vehicle.year)"

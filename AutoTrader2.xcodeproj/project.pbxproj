@@ -14,6 +14,8 @@
 		F9495551211274B300517B76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F949554F211274B300517B76 /* LaunchScreen.storyboard */; };
 		F949555C211274B300517B76 /* AutoTrader2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F949555B211274B300517B76 /* AutoTrader2Tests.swift */; };
 		F96E130B2137635100103F71 /* SortOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E130A2137635100103F71 /* SortOptionsViewController.swift */; };
+		F99B68602137A534006A02DF /* VehiclesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99B685F2137A534006A02DF /* VehiclesModel.swift */; };
+		F99B68622137AC0A006A02DF /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99B68612137AC0A006A02DF /* Selection.swift */; };
 		F9A443912115FA4200EFB406 /* VehiclesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A443902115FA4200EFB406 /* VehiclesGenerator.swift */; };
 		F9DA5BAC211287D3000D3DAE /* VehicleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA5BAB211287D3000D3DAE /* VehicleDetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +42,8 @@
 		F949555B211274B300517B76 /* AutoTrader2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTrader2Tests.swift; sourceTree = "<group>"; };
 		F949555D211274B300517B76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F96E130A2137635100103F71 /* SortOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOptionsViewController.swift; sourceTree = "<group>"; };
+		F99B685F2137A534006A02DF /* VehiclesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesModel.swift; sourceTree = "<group>"; };
+		F99B68612137AC0A006A02DF /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
 		F9A443902115FA4200EFB406 /* VehiclesGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesGenerator.swift; sourceTree = "<group>"; };
 		F9DA5BAB211287D3000D3DAE /* VehicleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,8 +90,10 @@
 				F9495546211274B200517B76 /* AppDelegate.swift */,
 				F9A443902115FA4200EFB406 /* VehiclesGenerator.swift */,
 				F9495548211274B200517B76 /* VehicleListViewController.swift */,
+				F99B685F2137A534006A02DF /* VehiclesModel.swift */,
 				F9DA5BAB211287D3000D3DAE /* VehicleDetailViewController.swift */,
 				F96E130A2137635100103F71 /* SortOptionsViewController.swift */,
+				F99B68612137AC0A006A02DF /* Selection.swift */,
 				F949554A211274B200517B76 /* Main.storyboard */,
 				F949554D211274B300517B76 /* Assets.xcassets */,
 				F949554F211274B300517B76 /* LaunchScreen.storyboard */,
@@ -206,6 +212,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F99B68622137AC0A006A02DF /* Selection.swift in Sources */,
+				F99B68602137A534006A02DF /* VehiclesModel.swift in Sources */,
 				F9A443912115FA4200EFB406 /* VehiclesGenerator.swift in Sources */,
 				F9DA5BAC211287D3000D3DAE /* VehicleDetailViewController.swift in Sources */,
 				F96E130B2137635100103F71 /* SortOptionsViewController.swift in Sources */,
