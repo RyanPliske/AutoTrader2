@@ -5,7 +5,7 @@ struct Selection: Codable {
     var isChecked: Bool
 }
 
-enum Option: String, Codable {
+enum Option: Int, Codable, Countable {
     case lowestToHighestInPrice
     case aToZForMake
     case aToZForModel
@@ -22,5 +22,22 @@ enum Option: String, Codable {
         case .oldestToNewest:
             return "Oldest to Newest"
         }
+    }
+    var key: String {
+        switch self {
+        case .lowestToHighestInPrice:
+            return "lowestToHighestInPrice"
+        case .aToZForMake:
+            return "aToZForMake"
+        case .aToZForModel:
+            return "aToZForModel"
+        case .oldestToNewest:
+            return "oldestToNewest"
+        }
+    }
+    
+    static func optionFor(key: String) -> Option? {
+        let options = Option.cases() as! [Option]
+        return options.first(where: { $0.key == key })
     }
 }
