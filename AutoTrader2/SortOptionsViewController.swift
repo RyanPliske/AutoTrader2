@@ -4,11 +4,18 @@ import UIKit
 protocol SortOptionsViewControllerDelegate: class {
     var selections: [Selection] { get }
     func newSelection(at: Int)
+    func selectionsCompleted()
 }
 
 class SortOptionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     weak var delegate: SortOptionsViewControllerDelegate?
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Log.info("Sort Options Being Dismissed!")
+        delegate?.selectionsCompleted()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return delegate?.selections.count ?? 0

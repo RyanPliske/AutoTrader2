@@ -5,7 +5,12 @@ enum PersistenceType: String {
     case plist
 }
 
-class SelectionPersistence_FlatFile {
+/*
+ Saves an Array (order is guaranteed)
+ [{"isChecked":false,"option":1},{"isChecked":false,"option":2},{"isChecked":false,"option":0},{"isChecked":false,"option":3}]
+ */
+
+class SelectionPersistence_FlatFile: SelectionPersistenceProtocol {
     
     private let fileName: String
     private let fileURL: URL

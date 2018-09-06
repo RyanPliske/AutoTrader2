@@ -127,9 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				F97C485D2140810300D9D480 /* SelectionPersistenceProtocol.swift */,
+				F9394AED2140685A0053EAEC /* SelectionPersistence_UserDefaults.swift */,
 				F97C485B214080C400D9D480 /* SelectionPersistence_UserDefaultsAlternative.swift */,
 				F97C48592140809900D9D480 /* SelectionPersistence_FlatFile.swift */,
-				F9394AED2140685A0053EAEC /* SelectionPersistence_UserDefaults.swift */,
 			);
 			path = "Selection Persistence Examples";
 			sourceTree = "<group>";

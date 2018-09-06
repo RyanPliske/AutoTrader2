@@ -4,6 +4,7 @@ class CarsCell: UITableViewCell {
     @IBOutlet weak var makeLabel: UILabel!
     @IBOutlet weak var modelLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
 }
 
 class VehicleListViewController: UIViewController {
@@ -17,10 +18,11 @@ class VehicleListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         model = VehiclesModel()
+        model.delegate = self
     }
     
     deinit {
-        print("vehicle list was deallocated")
+        Log.info("vehicle list was deallocated")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -33,9 +35,26 @@ class VehicleListViewController: UIViewController {
         super.prepare(for: segue, sender: sender)
     }
     
+    lazy var priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        return formatter
+    }()
+    
+}
+
+extension VehicleListViewController: VehiclesModelDelegate {
+    func dataUpdated() {
+        tableView.reloadData()
+    }
 }
 
 extension VehicleListViewController: SortOptionsViewControllerDelegate {
+    func selectionsCompleted() {
+        model.selectionsCompleted()
+    }
+    
     var selections: [Selection] {
         return model.selections
     }
@@ -48,9 +67,13 @@ extension VehicleListViewController: SortOptionsViewControllerDelegate {
 
 extension VehicleListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("🤠 User Selected row at \(indexPath.row)")
+        Log.debug("User Selected row at \(indexPath.row)")
         model.vehicleSelected(at: indexPath.row)
         performSegue(withIdentifier: "showDetails", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
     }
 }
 
@@ -64,14 +87,14 @@ extension VehicleListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let vehicleCell = tableView.dequeueReusableCell(withIdentifier: "carsCell", for: indexPath) as? CarsCell else {
+        guard let vehicleCell = tableView.dequeueReusableCell(withIdentifier: "carsCell", for: indexPath) as? CarsCell, let vehicle = model.vehicle(at: indexPath.row) else {
             return UITableViewCell()
         }
-        let vehicle = model.sortedVehicles[indexPath.row]
         vehicleCell.makeLabel.text = "Make: " + vehicle.make
         vehicleCell.modelLabel.text = "Model: " + vehicle.model
-        vehicleCell.yearLabel.text = "Year \(vehicle.year)"
-        
+        vehicleCell.yearLabel.text = "Year: \(vehicle.year)"
+        let priceString = priceFormatter.string(from: vehicle.price as NSNumber) ?? String(vehicle.price)
+        vehicleCell.priceLabel.text = "Price: " + priceString
         return vehicleCell
     }
 }

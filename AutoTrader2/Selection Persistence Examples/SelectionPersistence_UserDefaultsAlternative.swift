@@ -1,5 +1,9 @@
 import Foundation
 
+/*
+ Saves an Array (order is guaranteed)
+ */
+
 class SelectionPersistence_UserDefaultsAlternative: SelectionPersistenceProtocol {
     
     private let key = "Selections"

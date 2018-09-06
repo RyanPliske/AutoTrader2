@@ -1,10 +1,15 @@
 import Foundation
 
 /*
+ Saves a Dictionary (order is not guaranteed)
  [
  "Selections" : [
- "oldestToNewest" : false,
- 
+    "oldestToNewest" : false,
+    "aToZForMake" : false,
+    "aToZForModel" : false,
+    "oldestToNewest" : false
+    ]
+ ]
 */
 
 class SelectionPersistence_UserDefaults: SelectionPersistenceProtocol {
