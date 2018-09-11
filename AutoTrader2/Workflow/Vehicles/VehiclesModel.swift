@@ -52,6 +52,12 @@ class VehiclesModel {
         return vehicles[index]
     }
     
+    func moveSelection(at sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let selectionToMove =  selections[sourceIndexPath.row]
+        selections.remove(at: sourceIndexPath.row)
+        selections.insert(selectionToMove, at: destinationIndexPath.row)
+    }
+    
     func selectionsCompleted() {
         guard hasNewSelections else { return }
         

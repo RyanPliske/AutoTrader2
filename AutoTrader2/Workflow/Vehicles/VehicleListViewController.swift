@@ -51,6 +51,10 @@ extension VehicleListViewController: VehiclesModelDelegate {
 }
 
 extension VehicleListViewController: SortOptionsViewControllerDelegate {
+    func moveSelection(at source: IndexPath, to destination: IndexPath) {
+        model.moveSelection(at: source, to: destination)
+    }
+    
     func selectionsCompleted() {
         model.selectionsCompleted()
     }

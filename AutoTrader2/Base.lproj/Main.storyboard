@@ -127,7 +127,7 @@
             </objects>
             <point key="canvasLocation" x="2511.1999999999998" y="32.833583208395808"/>
         </scene>
-        <!--Sort Options View Controller-->
+        <!--Sort Options-->
         <scene sceneID="YwA-X3-aoG">
             <objects>
                 <viewController id="HQf-hy-OJA" customClass="SortOptionsViewController" customModule="AutoTrader2" customModuleProvider="target" sceneMemberID="viewController">
@@ -166,7 +166,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cQn-Wr-Vs0" firstAttribute="bottom" secondItem="6Gi-4M-4Xy" secondAttribute="bottom" id="0GW-Wv-AL8"/>
                             <constraint firstItem="cQn-Wr-Vs0" firstAttribute="trailing" secondItem="6Gi-4M-4Xy" secondAttribute="trailing" id="2h0-DR-rUY"/>
@@ -175,6 +175,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cQn-Wr-Vs0"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Sort Options" id="7dY-j4-TuN"/>
+                    <connections>
+                        <outlet property="tableView" destination="6Gi-4M-4Xy" id="TNQ-RF-NQl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1f-tf-1cX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
