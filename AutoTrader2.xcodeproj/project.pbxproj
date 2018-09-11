@@ -97,19 +97,10 @@
 		F9495545211274B200517B76 /* AutoTrader2 */ = {
 			isa = PBXGroup;
 			children = (
+				F9F9F51F21486F2300DA8396 /* Workflow */,
 				F97C48582140807400D9D480 /* Selection Persistence Examples */,
-				F9495546211274B200517B76 /* AppDelegate.swift */,
-				F9A443902115FA4200EFB406 /* VehiclesGenerator.swift */,
-				F9495548211274B200517B76 /* VehicleListViewController.swift */,
-				F99B685F2137A534006A02DF /* VehiclesModel.swift */,
-				F9DA5BAB211287D3000D3DAE /* VehicleDetailViewController.swift */,
-				F96E130A2137635100103F71 /* SortOptionsViewController.swift */,
-				F99B68612137AC0A006A02DF /* Selection.swift */,
-				F9394AEF214068800053EAEC /* Log.swift */,
+				F9F9F51E21486ED700DA8396 /* Supporting Files */,
 				F949554A211274B200517B76 /* Main.storyboard */,
-				F949554D211274B300517B76 /* Assets.xcassets */,
-				F949554F211274B300517B76 /* LaunchScreen.storyboard */,
-				F9495552211274B300517B76 /* Info.plist */,
 			);
 			path = AutoTrader2;
 			sourceTree = "<group>";
@@ -126,12 +117,45 @@
 		F97C48582140807400D9D480 /* Selection Persistence Examples */ = {
 			isa = PBXGroup;
 			children = (
+				F99B68612137AC0A006A02DF /* Selection.swift */,
 				F97C485D2140810300D9D480 /* SelectionPersistenceProtocol.swift */,
 				F9394AED2140685A0053EAEC /* SelectionPersistence_UserDefaults.swift */,
 				F97C485B214080C400D9D480 /* SelectionPersistence_UserDefaultsAlternative.swift */,
 				F97C48592140809900D9D480 /* SelectionPersistence_FlatFile.swift */,
 			);
 			path = "Selection Persistence Examples";
+			sourceTree = "<group>";
+		};
+		F9F9F51D21486E4D00DA8396 /* Vehicles */ = {
+			isa = PBXGroup;
+			children = (
+				F9A443902115FA4200EFB406 /* VehiclesGenerator.swift */,
+				F9495548211274B200517B76 /* VehicleListViewController.swift */,
+				F99B685F2137A534006A02DF /* VehiclesModel.swift */,
+				F9DA5BAB211287D3000D3DAE /* VehicleDetailViewController.swift */,
+			);
+			path = Vehicles;
+			sourceTree = "<group>";
+		};
+		F9F9F51E21486ED700DA8396 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F9394AEF214068800053EAEC /* Log.swift */,
+				F9495546211274B200517B76 /* AppDelegate.swift */,
+				F949554D211274B300517B76 /* Assets.xcassets */,
+				F949554F211274B300517B76 /* LaunchScreen.storyboard */,
+				F9495552211274B300517B76 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F9F9F51F21486F2300DA8396 /* Workflow */ = {
+			isa = PBXGroup;
+			children = (
+				F96E130A2137635100103F71 /* SortOptionsViewController.swift */,
+				F9F9F51D21486E4D00DA8396 /* Vehicles */,
+			);
+			path = Workflow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,9 +208,11 @@
 				TargetAttributes = {
 					F9495542211274B200517B76 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1000;
 					};
 					F9495556211274B300517B76 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1000;
 						TestTargetID = F9495542211274B200517B76;
 					};
 				};
@@ -408,14 +434,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 557EJSX593;
-				INFOPLIST_FILE = AutoTrader2/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AutoTrader2/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Monsanto.AutoTrader2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -426,14 +452,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 557EJSX593;
-				INFOPLIST_FILE = AutoTrader2/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AutoTrader2/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Monsanto.AutoTrader2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -453,7 +479,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Monsanto.AutoTrader2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutoTrader2.app/AutoTrader2";
 			};
@@ -474,7 +500,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Monsanto.AutoTrader2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutoTrader2.app/AutoTrader2";
 			};

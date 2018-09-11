@@ -14,22 +14,22 @@ class VehiclesModel {
     private var hasNewSelections: Bool
     
     init() {
-        vehicles = VehiclesGenerator().vehicles
-        selectedIndex = 0
         let selectionsToWrite = [
             Selection(option: Option.lowestToHighestInPrice, isChecked: false),
             Selection(option: Option.aToZForMake, isChecked: false),
             Selection(option: Option.aToZForModel, isChecked: false),
             Selection(option: Option.oldestToNewest, isChecked: false)
         ]
-//        SelectionPersistence_FlatFile(.plist).write(selectionsToWrite)
-//        SelectionPersistence_UserDefaults().write(selectionsToWrite)
         let persistence = SelectionPersistence_FlatFile(.json)
-        persistence.write(selectionsToWrite)
+        let selectionsFromPersistence = persistence.selections
+        if selectionsFromPersistence.isEmpty {
+            persistence.write(selectionsToWrite)
+        }
         selectionPersistence = persistence
-        selections = persistence.selections
+        selections = selectionsFromPersistence
         hasNewSelections = false
-        Log.info(selections.description)
+        vehicles = VehiclesGenerator().vehicles
+        selectedIndex = 0
     }
     
     var selectedVehicle: Vehicle { return vehicles[selectedIndex]  }
