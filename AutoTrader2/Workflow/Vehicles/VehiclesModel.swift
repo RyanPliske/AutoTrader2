@@ -32,6 +32,7 @@ class VehiclesModel {
         let selectionsFromPersistence = persistence.selections
         if selectionsFromPersistence.isEmpty {
             persistence.write(selectionsToWrite)
+            selections = selectionsToWrite
         }
         selectionPersistence = persistence
         selections = selectionsFromPersistence
