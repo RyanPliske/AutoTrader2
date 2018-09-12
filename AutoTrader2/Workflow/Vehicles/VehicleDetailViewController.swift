@@ -10,7 +10,7 @@ class VehicleDetailViewController: UIViewController {
         guard let vehicle = vehicle else {
             return
         }
-        self.textView.text = "\(vehicle.id.uuidString) \n \(vehicle.make) \n \(vehicle.model) \n \(vehicle.type)"
+        self.textView.text = "\(vehicle.id.uuidString) \n \(vehicle.make) \n \(vehicle.model)"
     }
     
 }

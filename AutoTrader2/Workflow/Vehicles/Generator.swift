@@ -1,14 +1,5 @@
 import Foundation
 
-enum VehicleType: String, CaseIterable {
-    case fourDoor
-    case twoDoor
-    case smallSuv
-    case bigSuv
-    case truck
-    case motorcycle
-}
-
 enum Make: String, CaseIterable {
     case honda
     case volkswagen
@@ -42,12 +33,13 @@ struct Generator {
     static func generateVehicles() -> [Vehicle] {
         return (0...1000).lazy.map { _ in
             let make = Make.allCases.randomElement()!
-            let vehicle = Vehicle(make: make.rawValue.capitalized,
-                                             model: make.randomModel,
-                                             year: Int.random(in: 1960...2018),
-                                             id: UUID(),
-                                             price: Double.random(in: 1_000...100_000),
-                                             type: VehicleType.allCases.randomElement()!.rawValue)
+            let vehicle = Vehicle(
+                make: make.rawValue.capitalized,
+                model: make.randomModel,
+                year: Int.random(in: 1960...2018),
+                id: UUID(),
+                price: Double.random(in: 1_000...100_000)
+            )
             return vehicle
         }
     }

@@ -10,7 +10,6 @@ struct Vehicle: Codable {
     let year: Int
     let id: UUID
     let price: Double
-    let type: String
 }
 
 class VehiclesModel {
