@@ -46,7 +46,9 @@ class VehicleListViewController: UIViewController {
 
 extension VehicleListViewController: VehiclesModelDelegate {
     func dataUpdated() {
-        tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
 }
 

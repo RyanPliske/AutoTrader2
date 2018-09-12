@@ -16,6 +16,8 @@
 		F9495551211274B300517B76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F949554F211274B300517B76 /* LaunchScreen.storyboard */; };
 		F949555C211274B300517B76 /* AutoTrader2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F949555B211274B300517B76 /* AutoTrader2Tests.swift */; };
 		F96E130B2137635100103F71 /* SortOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E130A2137635100103F71 /* SortOptionsViewController.swift */; };
+		F975EC032148AE9700F851FD /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F975EC022148AE9700F851FD /* SpinnerView.swift */; };
+		F975EC052148AF0900F851FD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F975EC042148AF0900F851FD /* UIView+Extension.swift */; };
 		F97C485A2140809900D9D480 /* SelectionPersistence_FlatFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C48592140809900D9D480 /* SelectionPersistence_FlatFile.swift */; };
 		F97C485C214080C400D9D480 /* SelectionPersistence_UserDefaultsAlternative.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C485B214080C400D9D480 /* SelectionPersistence_UserDefaultsAlternative.swift */; };
 		F97C485E2140810300D9D480 /* SelectionPersistenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C485D2140810300D9D480 /* SelectionPersistenceProtocol.swift */; };
@@ -49,6 +51,8 @@
 		F949555B211274B300517B76 /* AutoTrader2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTrader2Tests.swift; sourceTree = "<group>"; };
 		F949555D211274B300517B76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F96E130A2137635100103F71 /* SortOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOptionsViewController.swift; sourceTree = "<group>"; };
+		F975EC022148AE9700F851FD /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		F975EC042148AF0900F851FD /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		F97C48592140809900D9D480 /* SelectionPersistence_FlatFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionPersistence_FlatFile.swift; sourceTree = "<group>"; };
 		F97C485B214080C400D9D480 /* SelectionPersistence_UserDefaultsAlternative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionPersistence_UserDefaultsAlternative.swift; sourceTree = "<group>"; };
 		F97C485D2140810300D9D480 /* SelectionPersistenceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionPersistenceProtocol.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				F9F9F51F21486F2300DA8396 /* Workflow */,
 				F97C48582140807400D9D480 /* Selection Persistence Examples */,
 				F9F9F51E21486ED700DA8396 /* Supporting Files */,
+				F975EC012148AE7D00F851FD /* Utility */,
 				F949554A211274B200517B76 /* Main.storyboard */,
 			);
 			path = AutoTrader2;
@@ -112,6 +117,15 @@
 				F949555D211274B300517B76 /* Info.plist */,
 			);
 			path = AutoTrader2Tests;
+			sourceTree = "<group>";
+		};
+		F975EC012148AE7D00F851FD /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				F975EC022148AE9700F851FD /* SpinnerView.swift */,
+				F975EC042148AF0900F851FD /* UIView+Extension.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		F97C48582140807400D9D480 /* Selection Persistence Examples */ = {
@@ -262,12 +276,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9394AEE2140685A0053EAEC /* SelectionPersistence_UserDefaults.swift in Sources */,
+				F975EC032148AE9700F851FD /* SpinnerView.swift in Sources */,
 				F97C485C214080C400D9D480 /* SelectionPersistence_UserDefaultsAlternative.swift in Sources */,
 				F99B68622137AC0A006A02DF /* Selection.swift in Sources */,
 				F9394AF0214068800053EAEC /* Log.swift in Sources */,
 				F99B68602137A534006A02DF /* VehiclesModel.swift in Sources */,
 				F9A443912115FA4200EFB406 /* Generator.swift in Sources */,
 				F97C485E2140810300D9D480 /* SelectionPersistenceProtocol.swift in Sources */,
+				F975EC052148AF0900F851FD /* UIView+Extension.swift in Sources */,
 				F9DA5BAC211287D3000D3DAE /* VehicleDetailViewController.swift in Sources */,
 				F96E130B2137635100103F71 /* SortOptionsViewController.swift in Sources */,
 				F9495549211274B200517B76 /* VehicleListViewController.swift in Sources */,

@@ -17,9 +17,10 @@ class VehiclesModel {
     private(set) var selections: [Selection]
     
     private var vehicles = [Vehicle]()
-    private var selectedIndex: Int
     private let selectionPersistence: SelectionPersistenceProtocol
-    private var hasNewSelections: Bool
+    private var selectedVehicleIndex = 0
+    private var hasNewSelections = false
+    private let concurrentQueue = DispatchQueue.init(label: "VehiclesModel", qos: .userInitiated, attributes: [.concurrent])
     
     init() {
         let selectionsToWrite = [
@@ -29,19 +30,23 @@ class VehiclesModel {
             Selection(option: Option.oldestToNewest, isChecked: false)
         ]
         let persistence = SelectionPersistence_FlatFile(.json)
+        selectionPersistence = persistence
         let selectionsFromPersistence = persistence.selections
         if selectionsFromPersistence.isEmpty {
             persistence.write(selectionsToWrite)
             selections = selectionsToWrite
         }
-        selectionPersistence = persistence
         selections = selectionsFromPersistence
-        hasNewSelections = false
-        vehicles = Generator.generateVehicles()
-        selectedIndex = 0
+        vehicles = []
+        SpinnerView.sharedInstance.show()
+        concurrentQueue.async { [unowned self] in
+            self.vehicles = Generator.generateVehicles()
+            self.delegate?.dataUpdated()
+            SpinnerView.sharedInstance.hide()
+        }
     }
     
-    var selectedVehicle: Vehicle { return vehicles[selectedIndex]  }
+    var selectedVehicle: Vehicle { return vehicles[selectedVehicleIndex]  }
     
     var numberOfRows: Int { return vehicles.count }
     
@@ -51,7 +56,7 @@ class VehiclesModel {
     }
     
     func vehicleSelected(at index: Int) {
-        selectedIndex = index
+        selectedVehicleIndex = index
     }
     
     func vehicle(at index: Int) -> Vehicle? {
@@ -70,35 +75,38 @@ class VehiclesModel {
     
     func selectionsCompleted() {
         guard hasNewSelections else { return }
-        
-        let selectedOptions = selections.compactMap { $0.isChecked ? $0.option : nil }
-        
-        vehicles.sort(by: {
-            for option in selectedOptions {
-                switch option {
-                case .lowestToHighestInPrice:
-                    if $1.price < $0.price {
-                        return false
-                    }
-                case .aToZForMake:
-                    if $1.make < $0.make {
-                        return false
-                    }
-                case .aToZForModel:
-                    if $1.model < $0.model {
-                        return false
-                    }
-                case .oldestToNewest:
-                    if $1.year < $0.year {
-                        return false
+        SpinnerView.sharedInstance.show()
+        concurrentQueue.async { [unowned self] in
+            let selectedOptions = self.selections.compactMap { $0.isChecked ? $0.option : nil }
+            
+            self.vehicles.sort(by: {
+                for option in selectedOptions {
+                    switch option {
+                    case .lowestToHighestInPrice:
+                        if $1.price < $0.price {
+                            return false
+                        }
+                    case .aToZForMake:
+                        if $1.make < $0.make {
+                            return false
+                        }
+                    case .aToZForModel:
+                        if $1.model < $0.model {
+                            return false
+                        }
+                    case .oldestToNewest:
+                        if $1.year < $0.year {
+                            return false
+                        }
                     }
                 }
-            }
-            return true
-        })
-        
-        delegate?.dataUpdated()
-        selectionPersistence.write(selections)
-        hasNewSelections = false
+                return true
+            })
+            
+            self.delegate?.dataUpdated()
+            SpinnerView.sharedInstance.hide()
+            self.selectionPersistence.write(self.selections)
+            self.hasNewSelections = false
+        }
     }
 }
