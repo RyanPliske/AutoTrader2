@@ -9,21 +9,18 @@ class CarsCell: UITableViewCell {
 
 class VehicleListViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
-    var model: VehiclesModel!
+    private let model = VehiclesModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        model = VehiclesModel()
         model.delegate = self
     }
     
-    deinit {
-        Log.info("vehicle list was deallocated")
-    }
+    deinit { Log.info("vehicle list was deallocated") }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vehicleViewController = segue.destination as? VehicleDetailViewController  {
