@@ -4,6 +4,15 @@ protocol VehiclesModelDelegate: class {
     func dataUpdated()
 }
 
+struct Vehicle: Codable {
+    let make: String
+    let model: String
+    let year: Int
+    let id: UUID
+    let price: Double
+    let type: String
+}
+
 class VehiclesModel {
     weak var delegate: VehiclesModelDelegate?
     private(set) var selections: [Selection]
@@ -28,7 +37,7 @@ class VehiclesModel {
         selectionPersistence = persistence
         selections = selectionsFromPersistence
         hasNewSelections = false
-        vehicles = VehiclesGenerator().vehicles
+        vehicles = Generator.generateVehicles()
         selectedIndex = 0
     }
     
@@ -56,6 +65,7 @@ class VehiclesModel {
         let selectionToMove =  selections[sourceIndexPath.row]
         selections.remove(at: sourceIndexPath.row)
         selections.insert(selectionToMove, at: destinationIndexPath.row)
+        hasNewSelections = true
     }
     
     func selectionsCompleted() {

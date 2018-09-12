@@ -21,7 +21,7 @@
 		F97C485E2140810300D9D480 /* SelectionPersistenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C485D2140810300D9D480 /* SelectionPersistenceProtocol.swift */; };
 		F99B68602137A534006A02DF /* VehiclesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99B685F2137A534006A02DF /* VehiclesModel.swift */; };
 		F99B68622137AC0A006A02DF /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99B68612137AC0A006A02DF /* Selection.swift */; };
-		F9A443912115FA4200EFB406 /* VehiclesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A443902115FA4200EFB406 /* VehiclesGenerator.swift */; };
+		F9A443912115FA4200EFB406 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A443902115FA4200EFB406 /* Generator.swift */; };
 		F9DA5BAC211287D3000D3DAE /* VehicleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA5BAB211287D3000D3DAE /* VehicleDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +54,7 @@
 		F97C485D2140810300D9D480 /* SelectionPersistenceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionPersistenceProtocol.swift; sourceTree = "<group>"; };
 		F99B685F2137A534006A02DF /* VehiclesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesModel.swift; sourceTree = "<group>"; };
 		F99B68612137AC0A006A02DF /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
-		F9A443902115FA4200EFB406 /* VehiclesGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesGenerator.swift; sourceTree = "<group>"; };
+		F9A443902115FA4200EFB406 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		F9DA5BAB211287D3000D3DAE /* VehicleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,7 +129,7 @@
 		F9F9F51D21486E4D00DA8396 /* Vehicles */ = {
 			isa = PBXGroup;
 			children = (
-				F9A443902115FA4200EFB406 /* VehiclesGenerator.swift */,
+				F9A443902115FA4200EFB406 /* Generator.swift */,
 				F9495548211274B200517B76 /* VehicleListViewController.swift */,
 				F99B685F2137A534006A02DF /* VehiclesModel.swift */,
 				F9DA5BAB211287D3000D3DAE /* VehicleDetailViewController.swift */,
@@ -266,7 +266,7 @@
 				F99B68622137AC0A006A02DF /* Selection.swift in Sources */,
 				F9394AF0214068800053EAEC /* Log.swift in Sources */,
 				F99B68602137A534006A02DF /* VehiclesModel.swift in Sources */,
-				F9A443912115FA4200EFB406 /* VehiclesGenerator.swift in Sources */,
+				F9A443912115FA4200EFB406 /* Generator.swift in Sources */,
 				F97C485E2140810300D9D480 /* SelectionPersistenceProtocol.swift in Sources */,
 				F9DA5BAC211287D3000D3DAE /* VehicleDetailViewController.swift in Sources */,
 				F96E130B2137635100103F71 /* SortOptionsViewController.swift in Sources */,
