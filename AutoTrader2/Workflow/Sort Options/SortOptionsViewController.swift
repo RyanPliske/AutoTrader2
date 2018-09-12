@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 protocol SortOptionsViewControllerDelegate: class {
-    var selections: [Selection] { get }
+    var selections: [SortSelection] { get }
     func newSelection(at: Int)
     func selectionsCompleted()
     func moveSelection(at source: IndexPath, to destination: IndexPath)

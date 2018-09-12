@@ -30,15 +30,15 @@ enum Make: String, CaseIterable {
 }
 
 struct Generator {
-    static func generateVehicles() -> [Vehicle] {
-        return (0...800_000).lazy.map { _ in
+    static func generateVehicles(_ numberOfVehicles: Int) -> [Vehicle] {
+        return (1...numberOfVehicles).lazy.map { _ in
             let make = Make.allCases.randomElement()!
             let vehicle = Vehicle(
                 make: make.rawValue.capitalized,
                 model: make.randomModel,
                 year: Int.random(in: 1960...2018),
                 id: UUID(),
-                price: Double.random(in: 1_000...100_000)
+                price: Int.random(in: 1_000...100_000)
             )
             return vehicle
         }

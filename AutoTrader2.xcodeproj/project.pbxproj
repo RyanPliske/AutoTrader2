@@ -18,12 +18,17 @@
 		F96E130B2137635100103F71 /* SortOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E130A2137635100103F71 /* SortOptionsViewController.swift */; };
 		F975EC032148AE9700F851FD /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F975EC022148AE9700F851FD /* SpinnerView.swift */; };
 		F975EC052148AF0900F851FD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F975EC042148AF0900F851FD /* UIView+Extension.swift */; };
-		F97C485A2140809900D9D480 /* SelectionPersistence_FlatFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C48592140809900D9D480 /* SelectionPersistence_FlatFile.swift */; };
+		F97C485A2140809900D9D480 /* Selection_FlatFilePersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C48592140809900D9D480 /* Selection_FlatFilePersistence.swift */; };
 		F97C485C214080C400D9D480 /* SelectionPersistence_UserDefaultsAlternative.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C485B214080C400D9D480 /* SelectionPersistence_UserDefaultsAlternative.swift */; };
-		F97C485E2140810300D9D480 /* SelectionPersistenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C485D2140810300D9D480 /* SelectionPersistenceProtocol.swift */; };
 		F99B68602137A534006A02DF /* VehiclesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99B685F2137A534006A02DF /* VehiclesModel.swift */; };
-		F99B68622137AC0A006A02DF /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99B68612137AC0A006A02DF /* Selection.swift */; };
+		F99B68622137AC0A006A02DF /* SortSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99B68612137AC0A006A02DF /* SortSelection.swift */; };
 		F9A443912115FA4200EFB406 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A443902115FA4200EFB406 /* Generator.swift */; };
+		F9A64EFF2149965400E0891E /* Selections.json in Resources */ = {isa = PBXBuildFile; fileRef = F9A64EFE2149965400E0891E /* Selections.json */; };
+		F9A64F0621499D9700E0891E /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A64F0521499D9700E0891E /* Vehicle.swift */; };
+		F9A64F0821499DD900E0891E /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A64F0721499DD900E0891E /* SortOption.swift */; };
+		F9A64F0E21499FC400E0891E /* FlatFilePersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A64F0D21499FC400E0891E /* FlatFilePersistence.swift */; };
+		F9A64F102149A28700E0891E /* Vehicle_FlatFilePersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A64F0F2149A28700E0891E /* Vehicle_FlatFilePersistence.swift */; };
+		F9A64F162149ABCE00E0891E /* Vehicles.json in Resources */ = {isa = PBXBuildFile; fileRef = F9A64F152149ABCD00E0891E /* Vehicles.json */; };
 		F9DA5BAC211287D3000D3DAE /* VehicleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA5BAB211287D3000D3DAE /* VehicleDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,12 +58,17 @@
 		F96E130A2137635100103F71 /* SortOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOptionsViewController.swift; sourceTree = "<group>"; };
 		F975EC022148AE9700F851FD /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		F975EC042148AF0900F851FD /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		F97C48592140809900D9D480 /* SelectionPersistence_FlatFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionPersistence_FlatFile.swift; sourceTree = "<group>"; };
+		F97C48592140809900D9D480 /* Selection_FlatFilePersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection_FlatFilePersistence.swift; sourceTree = "<group>"; };
 		F97C485B214080C400D9D480 /* SelectionPersistence_UserDefaultsAlternative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionPersistence_UserDefaultsAlternative.swift; sourceTree = "<group>"; };
-		F97C485D2140810300D9D480 /* SelectionPersistenceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionPersistenceProtocol.swift; sourceTree = "<group>"; };
 		F99B685F2137A534006A02DF /* VehiclesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesModel.swift; sourceTree = "<group>"; };
-		F99B68612137AC0A006A02DF /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
+		F99B68612137AC0A006A02DF /* SortSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortSelection.swift; sourceTree = "<group>"; };
 		F9A443902115FA4200EFB406 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		F9A64EFE2149965400E0891E /* Selections.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Selections.json; sourceTree = "<group>"; };
+		F9A64F0521499D9700E0891E /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		F9A64F0721499DD900E0891E /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
+		F9A64F0D21499FC400E0891E /* FlatFilePersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatFilePersistence.swift; sourceTree = "<group>"; };
+		F9A64F0F2149A28700E0891E /* Vehicle_FlatFilePersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle_FlatFilePersistence.swift; sourceTree = "<group>"; };
+		F9A64F152149ABCD00E0891E /* Vehicles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Vehicles.json; sourceTree = "<group>"; };
 		F9DA5BAB211287D3000D3DAE /* VehicleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,10 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				F9F9F51F21486F2300DA8396 /* Workflow */,
-				F97C48582140807400D9D480 /* Selection Persistence Examples */,
+				F9A64EFD2149963A00E0891E /* Packaged Data */,
 				F9F9F51E21486ED700DA8396 /* Supporting Files */,
 				F975EC012148AE7D00F851FD /* Utility */,
-				F949554A211274B200517B76 /* Main.storyboard */,
 			);
 			path = AutoTrader2;
 			sourceTree = "<group>";
@@ -122,39 +131,115 @@
 		F975EC012148AE7D00F851FD /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				F9394AEF214068800053EAEC /* Log.swift */,
 				F975EC022148AE9700F851FD /* SpinnerView.swift */,
 				F975EC042148AF0900F851FD /* UIView+Extension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		F97C48582140807400D9D480 /* Selection Persistence Examples */ = {
+		F97C48582140807400D9D480 /* Selection Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				F99B68612137AC0A006A02DF /* Selection.swift */,
-				F97C485D2140810300D9D480 /* SelectionPersistenceProtocol.swift */,
-				F9394AED2140685A0053EAEC /* SelectionPersistence_UserDefaults.swift */,
-				F97C485B214080C400D9D480 /* SelectionPersistence_UserDefaultsAlternative.swift */,
-				F97C48592140809900D9D480 /* SelectionPersistence_FlatFile.swift */,
+				F97C48592140809900D9D480 /* Selection_FlatFilePersistence.swift */,
+				F9A64F0021499C7400E0891E /* Other Examples */,
 			);
-			path = "Selection Persistence Examples";
+			path = "Selection Persistence";
 			sourceTree = "<group>";
 		};
-		F9F9F51D21486E4D00DA8396 /* Vehicles */ = {
+		F9A64EFD2149963A00E0891E /* Packaged Data */ = {
+			isa = PBXGroup;
+			children = (
+				F9A64EFE2149965400E0891E /* Selections.json */,
+				F9A64F152149ABCD00E0891E /* Vehicles.json */,
+			);
+			path = "Packaged Data";
+			sourceTree = "<group>";
+		};
+		F9A64F0021499C7400E0891E /* Other Examples */ = {
+			isa = PBXGroup;
+			children = (
+				F9394AED2140685A0053EAEC /* SelectionPersistence_UserDefaults.swift */,
+				F97C485B214080C400D9D480 /* SelectionPersistence_UserDefaultsAlternative.swift */,
+			);
+			path = "Other Examples";
+			sourceTree = "<group>";
+		};
+		F9A64F0221499CF100E0891E /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				F9A443902115FA4200EFB406 /* Generator.swift */,
-				F9495548211274B200517B76 /* VehicleListViewController.swift */,
 				F99B685F2137A534006A02DF /* VehiclesModel.swift */,
+				F9A64F0921499E0500E0891E /* Data Structures */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F9A64F0321499D1000E0891E /* Vehicle Detail */ = {
+			isa = PBXGroup;
+			children = (
 				F9DA5BAB211287D3000D3DAE /* VehicleDetailViewController.swift */,
 			);
-			path = Vehicles;
+			path = "Vehicle Detail";
+			sourceTree = "<group>";
+		};
+		F9A64F0421499D1F00E0891E /* Sort Options */ = {
+			isa = PBXGroup;
+			children = (
+				F96E130A2137635100103F71 /* SortOptionsViewController.swift */,
+			);
+			path = "Sort Options";
+			sourceTree = "<group>";
+		};
+		F9A64F0921499E0500E0891E /* Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				F9A64F0721499DD900E0891E /* SortOption.swift */,
+				F99B68612137AC0A006A02DF /* SortSelection.swift */,
+				F9A64F0521499D9700E0891E /* Vehicle.swift */,
+			);
+			path = "Data Structures";
+			sourceTree = "<group>";
+		};
+		F9A64F0A21499EC400E0891E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F9495548211274B200517B76 /* VehicleListViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F9A64F0B21499F2E00E0891E /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				F9A64F0D21499FC400E0891E /* FlatFilePersistence.swift */,
+				F9A64F0C21499F3C00E0891E /* Vehicle Persistence */,
+				F97C48582140807400D9D480 /* Selection Persistence */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		F9A64F0C21499F3C00E0891E /* Vehicle Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				F9A64F0F2149A28700E0891E /* Vehicle_FlatFilePersistence.swift */,
+			);
+			path = "Vehicle Persistence";
+			sourceTree = "<group>";
+		};
+		F9F9F51D21486E4D00DA8396 /* Vehicles List */ = {
+			isa = PBXGroup;
+			children = (
+				F9A64F0A21499EC400E0891E /* ViewController */,
+				F9A64F0221499CF100E0891E /* Model */,
+				F9A64F0B21499F2E00E0891E /* Persistence */,
+			);
+			path = "Vehicles List";
 			sourceTree = "<group>";
 		};
 		F9F9F51E21486ED700DA8396 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F9394AEF214068800053EAEC /* Log.swift */,
 				F9495546211274B200517B76 /* AppDelegate.swift */,
 				F949554D211274B300517B76 /* Assets.xcassets */,
 				F949554F211274B300517B76 /* LaunchScreen.storyboard */,
@@ -166,8 +251,10 @@
 		F9F9F51F21486F2300DA8396 /* Workflow */ = {
 			isa = PBXGroup;
 			children = (
-				F96E130A2137635100103F71 /* SortOptionsViewController.swift */,
-				F9F9F51D21486E4D00DA8396 /* Vehicles */,
+				F949554A211274B200517B76 /* Main.storyboard */,
+				F9F9F51D21486E4D00DA8396 /* Vehicles List */,
+				F9A64F0421499D1F00E0891E /* Sort Options */,
+				F9A64F0321499D1000E0891E /* Vehicle Detail */,
 			);
 			path = Workflow;
 			sourceTree = "<group>";
@@ -255,6 +342,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9A64F162149ABCE00E0891E /* Vehicles.json in Resources */,
+				F9A64EFF2149965400E0891E /* Selections.json in Resources */,
 				F9495551211274B300517B76 /* LaunchScreen.storyboard in Resources */,
 				F949554E211274B300517B76 /* Assets.xcassets in Resources */,
 				F949554C211274B200517B76 /* Main.storyboard in Resources */,
@@ -278,17 +367,20 @@
 				F9394AEE2140685A0053EAEC /* SelectionPersistence_UserDefaults.swift in Sources */,
 				F975EC032148AE9700F851FD /* SpinnerView.swift in Sources */,
 				F97C485C214080C400D9D480 /* SelectionPersistence_UserDefaultsAlternative.swift in Sources */,
-				F99B68622137AC0A006A02DF /* Selection.swift in Sources */,
+				F9A64F102149A28700E0891E /* Vehicle_FlatFilePersistence.swift in Sources */,
+				F9A64F0621499D9700E0891E /* Vehicle.swift in Sources */,
+				F99B68622137AC0A006A02DF /* SortSelection.swift in Sources */,
 				F9394AF0214068800053EAEC /* Log.swift in Sources */,
 				F99B68602137A534006A02DF /* VehiclesModel.swift in Sources */,
 				F9A443912115FA4200EFB406 /* Generator.swift in Sources */,
-				F97C485E2140810300D9D480 /* SelectionPersistenceProtocol.swift in Sources */,
+				F9A64F0E21499FC400E0891E /* FlatFilePersistence.swift in Sources */,
 				F975EC052148AF0900F851FD /* UIView+Extension.swift in Sources */,
 				F9DA5BAC211287D3000D3DAE /* VehicleDetailViewController.swift in Sources */,
 				F96E130B2137635100103F71 /* SortOptionsViewController.swift in Sources */,
+				F9A64F0821499DD900E0891E /* SortOption.swift in Sources */,
 				F9495549211274B200517B76 /* VehicleListViewController.swift in Sources */,
 				F9495547211274B200517B76 /* AppDelegate.swift in Sources */,
-				F97C485A2140809900D9D480 /* SelectionPersistence_FlatFile.swift in Sources */,
+				F97C485A2140809900D9D480 /* Selection_FlatFilePersistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

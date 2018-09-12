@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AutoTrader2/Workflow/Vehicles/VehicleListViewController.swift"
-            timestampString = "558411981.247115"
+            timestampString = "558469920.374535"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "dataUpdated()"
             landmarkType = "7">
          </BreakpointContent>

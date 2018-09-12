@@ -39,6 +39,7 @@ class VehicleListViewController: UIViewController {
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
         formatter.numberStyle = .currency
+        formatter.maximumFractionDigits = 0
         return formatter
     }()
     
@@ -61,7 +62,7 @@ extension VehicleListViewController: SortOptionsViewControllerDelegate {
         model.selectionsCompleted()
     }
     
-    var selections: [Selection] {
+    var selections: [SortSelection] {
         return model.selections
     }
     
