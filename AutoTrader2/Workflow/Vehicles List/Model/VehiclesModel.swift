@@ -84,19 +84,21 @@ class VehiclesModel {
     func filterVehiclesFor(searchText: String) {
         let searchItems = searchText.lowercased().split(separator: " ").map { String($0) }
         
-        // This can be optimized!
-        var vehicles = self.vehicles
-        for searchItem in searchItems {
-            vehicles = vehicles.filter {
-                let makeContainsSearchText = $0.make.lowercased().contains(searchItem)
-                let modelContainsSearchText = $0.model.lowercased().contains(searchItem)
-                let yearContainsSearchText = String($0.year).contains(searchItem)
-                return makeContainsSearchText || modelContainsSearchText || yearContainsSearchText
+        SpinnerView.sharedInstance.show()
+        concurrentQueue.async { [unowned self] in
+            var vehicles = self.vehicles
+            for searchItem in searchItems {
+                vehicles = vehicles.filter {
+                    let makeContainsSearchText = $0.make.lowercased().contains(searchItem)
+                    let modelContainsSearchText = $0.model.lowercased().contains(searchItem)
+                    let yearContainsSearchText = String($0.year).contains(searchItem)
+                    return makeContainsSearchText || modelContainsSearchText || yearContainsSearchText
+                }
             }
+            self.filteredVehicles = vehicles
+            self.delegate?.dataUpdated()
+            SpinnerView.sharedInstance.hide()
         }
-        filteredVehicles = vehicles
-
-        self.delegate?.dataUpdated()
     }
     
     private func sortVehicles() {
