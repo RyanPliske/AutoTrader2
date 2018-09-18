@@ -23,8 +23,11 @@ class VehicleListViewController: UIViewController {
         searchController.delegate = self
         searchController.searchBar.delegate = self
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.dimsBackgroundDuringPresentation = true
+        searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.titleView = searchController.searchBar
+//        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.placeholder = "make, model, year, price"
+
         definesPresentationContext = true
     }
     
@@ -51,11 +54,44 @@ class VehicleListViewController: UIViewController {
 }
 
 extension VehicleListViewController: UISearchControllerDelegate {
+    func didDismissSearchController(_ searchController: UISearchController) {
+
+    }
+
+    func didPresentSearchController(_ searchController: UISearchController) {
+
+    }
+
+    func willDismissSearchController(_ searchController: UISearchController) {
+
+    }
+
+    func willPresentSearchController(_ searchController: UISearchController) {
+
+    }
     
 }
 
 extension VehicleListViewController: UISearchBarDelegate {
-    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+    }
+//    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//    }
+//    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+//    }
+//    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+//    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    }
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    }
 }
 
 extension VehicleListViewController: UISearchResultsUpdating {
