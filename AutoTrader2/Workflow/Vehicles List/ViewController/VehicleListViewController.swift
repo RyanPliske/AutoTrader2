@@ -14,6 +14,15 @@ class VehicleListViewController: UIViewController {
     private let model = VehiclesModel()
     private let searchController = UISearchController(searchResultsController: nil)
 
+    // note: VehiclesModelDelegate property
+    var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
+
+    private var searchBarIsEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -24,9 +33,10 @@ class VehicleListViewController: UIViewController {
         searchController.searchBar.delegate = self
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
-        navigationItem.titleView = searchController.searchBar
+        navigationItem.searchController = searchController
+//        navigationItem.titleView = searchController.searchBar
 //        tableView.tableHeaderView = searchController.searchBar
-        searchController.searchBar.placeholder = "make, model, year, price"
+        searchController.searchBar.placeholder = "search vehicles"
 
         definesPresentationContext = true
     }
@@ -50,7 +60,6 @@ class VehicleListViewController: UIViewController {
         formatter.maximumFractionDigits = 0
         return formatter
     }()
-    
 }
 
 extension VehicleListViewController: UISearchControllerDelegate {
@@ -96,11 +105,13 @@ extension VehicleListViewController: UISearchBarDelegate {
 
 extension VehicleListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+        model.filterVehiclesFor(searchText: searchController.searchBar.text!)
     }
 }
 
 extension VehicleListViewController: VehiclesModelDelegate {
+    // note: isFiltering property stored on class definition
+
     func dataUpdated() {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()

@@ -1,6 +1,7 @@
 import Foundation
 
 protocol VehiclesModelDelegate: class {
+    var isFiltering: Bool { get }
     func dataUpdated()
 }
 
@@ -11,6 +12,7 @@ class VehiclesModel {
     private let selectionPersistence: Selection_FlatFilePersistence
     private let vehiclePersistence: Vehicle_FlatFilePersistence
     private var vehicles = [Vehicle]()
+    private var filteredVehicles = [Vehicle]()
     private var selectedVehicleIndex = 0
     private var hasNewSelections = false
     private let concurrentQueue = DispatchQueue.init(label: "VehiclesModel", qos: .userInitiated, attributes: [.concurrent])
@@ -31,10 +33,10 @@ class VehiclesModel {
             SpinnerView.sharedInstance.hide()
         }
     }
+
+    var selectedVehicle: Vehicle { return delegate?.isFiltering ?? false ? filteredVehicles[selectedVehicleIndex] : vehicles[selectedVehicleIndex]  }
     
-    var selectedVehicle: Vehicle { return vehicles[selectedVehicleIndex]  }
-    
-    var numberOfRows: Int { return vehicles.count }
+    var numberOfRows: Int { return delegate?.isFiltering ?? false ? filteredVehicles.count : vehicles.count }
     
     func newSelection(at index: Int) {
         selections[index].isChecked = !selections[index].isChecked
@@ -46,10 +48,11 @@ class VehiclesModel {
     }
     
     func vehicle(at index: Int) -> Vehicle? {
-        guard index <= vehicles.count - 1 else {
+        let vehicleSource = delegate?.isFiltering ?? false ? filteredVehicles : vehicles
+        guard index <= vehicleSource.count - 1 else {
             return nil
         }
-        return vehicles[index]
+        return vehicleSource[index]
     }
     
     func moveSelection(at sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -69,6 +72,18 @@ class VehiclesModel {
             self.selectionPersistence.write(self.selections)
             self.hasNewSelections = false
         }
+    }
+
+    func filterVehiclesFor(searchText: String) {
+        filteredVehicles = vehicles.filter( { ( vehicle: Vehicle ) -> Bool in
+            let makeContainsSearchText = vehicle.make.lowercased().contains(searchText.lowercased())
+            let modelContainsSearchText = vehicle.model.lowercased().contains(searchText.lowercased())
+            let yearContainsSearchText = String(vehicle.year).contains(searchText.lowercased())
+            let priceContainsSearchText = String(vehicle.price).contains(searchText.lowercased())
+            return makeContainsSearchText || modelContainsSearchText || yearContainsSearchText || priceContainsSearchText
+        })
+
+        self.delegate?.dataUpdated()
     }
     
     private func sortVehicles() {
