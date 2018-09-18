@@ -12,12 +12,24 @@ class VehicleListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private let model = VehiclesModel()
-
+    private let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         model.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
+//        navigationItem.titleView = searchController.searchBar
+//        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.placeholder = "search vehicles"
+
+        definesPresentationContext = true
     }
     
     deinit { Log.info("vehicle list was deallocated") }
@@ -39,10 +51,67 @@ class VehicleListViewController: UIViewController {
         formatter.maximumFractionDigits = 0
         return formatter
     }()
+}
+
+extension VehicleListViewController: UISearchControllerDelegate {
+    func didDismissSearchController(_ searchController: UISearchController) {
+
+    }
+
+    func didPresentSearchController(_ searchController: UISearchController) {
+
+    }
+
+    func willDismissSearchController(_ searchController: UISearchController) {
+
+    }
+
+    func willPresentSearchController(_ searchController: UISearchController) {
+
+    }
     
 }
 
+extension VehicleListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+    }
+//    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//    }
+//    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+//    }
+//    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+//    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    }
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        model.clearFilteredVehicles()
+    }
+}
+
+extension VehicleListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else { return }
+        if searchText.isEmpty {
+            model.clearFilteredVehicles()
+        } else {
+            model.filterVehiclesFor(searchText: searchText)
+        }
+    }
+}
+
 extension VehicleListViewController: VehiclesModelDelegate {
+    var isFiltering: Bool {
+        let searchBarIsEmpty = searchController.searchBar.text?.isEmpty ?? true
+        return searchController.isActive && !searchBarIsEmpty
+    }
+
     func dataUpdated() {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()

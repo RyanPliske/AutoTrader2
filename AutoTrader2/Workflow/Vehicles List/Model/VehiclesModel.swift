@@ -1,6 +1,9 @@
 import Foundation
 
+// https://ahrefs.com/blog/google-advanced-search-operators/
+
 protocol VehiclesModelDelegate: class {
+    var isFiltering: Bool { get }
     func dataUpdated()
 }
 
@@ -11,6 +14,7 @@ class VehiclesModel {
     private let selectionPersistence: Selection_FlatFilePersistence
     private let vehiclePersistence: Vehicle_FlatFilePersistence
     private var vehicles = [Vehicle]()
+    private var filteredVehicles = [Vehicle]()
     private var selectedVehicleIndex = 0
     private var hasNewSelections = false
     private let concurrentQueue = DispatchQueue.init(label: "VehiclesModel", qos: .userInitiated, attributes: [.concurrent])
@@ -31,10 +35,10 @@ class VehiclesModel {
             SpinnerView.sharedInstance.hide()
         }
     }
+
+    var selectedVehicle: Vehicle { return delegate?.isFiltering ?? false ? filteredVehicles[selectedVehicleIndex] : vehicles[selectedVehicleIndex]  }
     
-    var selectedVehicle: Vehicle { return vehicles[selectedVehicleIndex]  }
-    
-    var numberOfRows: Int { return vehicles.count }
+    var numberOfRows: Int { return delegate?.isFiltering ?? false ? filteredVehicles.count : vehicles.count }
     
     func newSelection(at index: Int) {
         selections[index].isChecked = !selections[index].isChecked
@@ -46,10 +50,11 @@ class VehiclesModel {
     }
     
     func vehicle(at index: Int) -> Vehicle? {
-        guard index <= vehicles.count - 1 else {
+        let vehicleSource = delegate?.isFiltering ?? false ? filteredVehicles : vehicles
+        guard index <= vehicleSource.count - 1 else {
             return nil
         }
-        return vehicles[index]
+        return vehicleSource[index]
     }
     
     func moveSelection(at sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -69,6 +74,29 @@ class VehiclesModel {
             self.selectionPersistence.write(self.selections)
             self.hasNewSelections = false
         }
+    }
+    
+    func clearFilteredVehicles() {
+        filteredVehicles = []
+        delegate?.dataUpdated()
+    }
+
+    func filterVehiclesFor(searchText: String) {
+        let searchItems = searchText.lowercased().split(separator: " ").map { String($0) }
+        
+        // This can be optimized!
+        var vehicles = self.vehicles
+        for searchItem in searchItems {
+            vehicles = vehicles.filter {
+                let makeContainsSearchText = $0.make.lowercased().contains(searchItem)
+                let modelContainsSearchText = $0.model.lowercased().contains(searchItem)
+                let yearContainsSearchText = String($0.year).contains(searchItem)
+                return makeContainsSearchText || modelContainsSearchText || yearContainsSearchText
+            }
+        }
+        filteredVehicles = vehicles
+
+        self.delegate?.dataUpdated()
     }
     
     private func sortVehicles() {
@@ -99,3 +127,16 @@ class VehiclesModel {
         })
     }
 }
+
+//extension String {
+//    func containsAny(_ searchTexts: [String]) -> Bool {
+//        let results = searchTexts.reduce(into: [Bool](), { endResult, searchText in
+//            endResult.append(contains(searchText))
+//
+//        })
+//        for text in searchTexts {
+//            if contains(text) { return true }
+//        }
+//        return false
+//    }
+//}
