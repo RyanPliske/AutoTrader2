@@ -13,16 +13,7 @@ class VehicleListViewController: UIViewController {
     
     private let model = VehiclesModel()
     private let searchController = UISearchController(searchResultsController: nil)
-
-    // note: VehiclesModelDelegate property
-    var isFiltering: Bool {
-        return searchController.isActive && !searchBarIsEmpty
-    }
-
-    private var searchBarIsEmpty: Bool {
-        return searchController.searchBar.text?.isEmpty ?? true
-    }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -100,17 +91,26 @@ extension VehicleListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        model.clearFilteredVehicles()
     }
 }
 
 extension VehicleListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        model.filterVehiclesFor(searchText: searchController.searchBar.text!)
+        guard let searchText = searchController.searchBar.text else { return }
+        if searchText.isEmpty {
+            model.clearFilteredVehicles()
+        } else {
+            model.filterVehiclesFor(searchText: searchText)
+        }
     }
 }
 
 extension VehicleListViewController: VehiclesModelDelegate {
-    // note: isFiltering property stored on class definition
+    var isFiltering: Bool {
+        let searchBarIsEmpty = searchController.searchBar.text?.isEmpty ?? true
+        return searchController.isActive && !searchBarIsEmpty
+    }
 
     func dataUpdated() {
         DispatchQueue.main.async { [weak self] in

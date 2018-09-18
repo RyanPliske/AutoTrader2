@@ -1,5 +1,7 @@
 import Foundation
 
+// https://ahrefs.com/blog/google-advanced-search-operators/
+
 protocol VehiclesModelDelegate: class {
     var isFiltering: Bool { get }
     func dataUpdated()
@@ -73,15 +75,26 @@ class VehiclesModel {
             self.hasNewSelections = false
         }
     }
+    
+    func clearFilteredVehicles() {
+        filteredVehicles = []
+        delegate?.dataUpdated()
+    }
 
     func filterVehiclesFor(searchText: String) {
-        filteredVehicles = vehicles.filter( { ( vehicle: Vehicle ) -> Bool in
-            let makeContainsSearchText = vehicle.make.lowercased().contains(searchText.lowercased())
-            let modelContainsSearchText = vehicle.model.lowercased().contains(searchText.lowercased())
-            let yearContainsSearchText = String(vehicle.year).contains(searchText.lowercased())
-            let priceContainsSearchText = String(vehicle.price).contains(searchText.lowercased())
-            return makeContainsSearchText || modelContainsSearchText || yearContainsSearchText || priceContainsSearchText
-        })
+        let searchItems = searchText.lowercased().split(separator: " ").map { String($0) }
+        
+        // This can be optimized!
+        var vehicles = self.vehicles
+        for searchItem in searchItems {
+            vehicles = vehicles.filter {
+                let makeContainsSearchText = $0.make.lowercased().contains(searchItem)
+                let modelContainsSearchText = $0.model.lowercased().contains(searchItem)
+                let yearContainsSearchText = String($0.year).contains(searchItem)
+                return makeContainsSearchText || modelContainsSearchText || yearContainsSearchText
+            }
+        }
+        filteredVehicles = vehicles
 
         self.delegate?.dataUpdated()
     }
@@ -114,3 +127,16 @@ class VehiclesModel {
         })
     }
 }
+
+//extension String {
+//    func containsAny(_ searchTexts: [String]) -> Bool {
+//        let results = searchTexts.reduce(into: [Bool](), { endResult, searchText in
+//            endResult.append(contains(searchText))
+//
+//        })
+//        for text in searchTexts {
+//            if contains(text) { return true }
+//        }
+//        return false
+//    }
+//}
