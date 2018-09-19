@@ -13,11 +13,24 @@ class VehicleListViewController: UIViewController {
     
     private let model = VehiclesModel()
 
+    private let searchController = UISearchController(searchResultsController: nil)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         model.delegate = self
+
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+
+        navigationItem.searchController = searchController
+        searchController.searchBar.placeholder = "search vehicles"
+
+        definesPresentationContext = true
     }
     
     deinit { Log.info("vehicle list was deallocated") }
@@ -40,6 +53,20 @@ class VehicleListViewController: UIViewController {
         return formatter
     }()
     
+}
+
+extension VehicleListViewController: UISearchBarDelegate {
+
+}
+
+extension VehicleListViewController: UISearchControllerDelegate {
+
+}
+
+extension VehicleListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        print(#function)
+    }
 }
 
 extension VehicleListViewController: VehiclesModelDelegate {
