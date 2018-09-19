@@ -120,6 +120,8 @@ extension VehicleListViewController: VehiclesModelDelegate {
 }
 
 extension VehicleListViewController: SortOptionsViewControllerDelegate {
+    // TODO: pass along range selections
+
     func moveSelection(at source: IndexPath, to destination: IndexPath) {
         model.moveSelection(at: source, to: destination)
     }

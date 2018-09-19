@@ -63,6 +63,8 @@ class VehiclesModel {
         selections.insert(selectionToMove, at: destinationIndexPath.row)
         hasNewSelections = true
     }
+
+    // TODO: - handle range selections
     
     func selectionsCompleted() {
         guard hasNewSelections else { return }
