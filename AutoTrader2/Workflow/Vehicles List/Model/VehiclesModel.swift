@@ -1,6 +1,7 @@
 import Foundation
 
 protocol VehiclesModelDelegate: class {
+    var isFiltering: Bool { get }
     func dataUpdated()
 }
 
@@ -11,6 +12,7 @@ class VehiclesModel {
     private let selectionPersistence: Selection_FlatFilePersistence
     private let vehiclePersistence: Vehicle_FlatFilePersistence
     private var vehicles = [Vehicle]()
+    private var filteredVehicles = [Vehicle]()
     private var selectedVehicleIndex = 0
     private var hasNewSelections = false
     private let concurrentQueue = DispatchQueue.init(label: "VehiclesModel", qos: .userInitiated, attributes: [.concurrent])
@@ -32,9 +34,17 @@ class VehiclesModel {
         }
     }
     
-    var selectedVehicle: Vehicle { return vehicles[selectedVehicleIndex]  }
-    
-    var numberOfRows: Int { return vehicles.count }
+    var selectedVehicle: Vehicle {
+        return delegate?.isFiltering ?? false
+            ? filteredVehicles[selectedVehicleIndex]
+            : vehicles[selectedVehicleIndex]
+    }
+
+    var numberOfRows: Int {
+        return delegate?.isFiltering ?? false
+            ? filteredVehicles.count
+            : vehicles.count
+    }
     
     func newSelection(at index: Int) {
         selections[index].isChecked = !selections[index].isChecked
@@ -46,10 +56,14 @@ class VehiclesModel {
     }
     
     func vehicle(at index: Int) -> Vehicle? {
-        guard index <= vehicles.count - 1 else {
+        let vehicleSource = delegate?.isFiltering ?? false
+            ? filteredVehicles
+            : vehicles
+
+        guard index <= vehicleSource.count - 1 else {
             return nil
         }
-        return vehicles[index]
+        return vehicleSource[index]
     }
     
     func moveSelection(at sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -97,5 +111,29 @@ class VehiclesModel {
             }
             return true
         })
+    }
+
+    func filterVehiclesFor(searchText: String) {
+        let searchTerms = searchText.lowercased().split(separator: " ").map{ String($0) }
+
+        var vehicles = self.vehicles
+
+        for searchTerm in searchTerms {
+            vehicles = vehicles.filter {
+                let makeContainsSearchTerm = $0.make.lowercased().contains(searchTerm)
+                let modelContainsSearchTerm = $0.model.lowercased().contains(searchTerm)
+                let yearContainsSearchTerm = String($0.year).contains(searchTerm)
+
+                return makeContainsSearchTerm || modelContainsSearchTerm || yearContainsSearchTerm
+            }
+        }
+        filteredVehicles = vehicles
+
+        self.delegate?.dataUpdated()
+    }
+
+    func clearFilteredVehicles() {
+        filteredVehicles = []
+        delegate?.dataUpdated()
     }
 }

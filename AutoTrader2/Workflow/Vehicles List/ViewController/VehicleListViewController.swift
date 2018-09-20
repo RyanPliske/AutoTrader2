@@ -7,7 +7,7 @@ class CarsCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
 }
 
-class VehicleListViewController: UIViewController {
+class VehicleListViewController: UIViewController, UISearchControllerDelegate {
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -55,21 +55,30 @@ class VehicleListViewController: UIViewController {
     
 }
 
+// MARK: - UISearchBarDelegate
 extension VehicleListViewController: UISearchBarDelegate {
-
-}
-
-extension VehicleListViewController: UISearchControllerDelegate {
-
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        model.clearFilteredVehicles()
+    }
 }
 
 extension VehicleListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        print(#function)
+        guard let searchText = searchController.searchBar.text else { return }
+        if searchText.isEmpty {
+            model.clearFilteredVehicles()
+        } else {
+            model.filterVehiclesFor(searchText: searchText)
+        }
     }
 }
 
 extension VehicleListViewController: VehiclesModelDelegate {
+    var isFiltering: Bool {
+        let searchBarIsEmpty = searchController.searchBar.text?.isEmpty ?? true
+        return searchController.isActive && !searchBarIsEmpty
+    }
+
     func dataUpdated() {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
